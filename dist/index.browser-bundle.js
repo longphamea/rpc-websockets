@@ -2,48 +2,33 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Client = void 0;
-
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
-
 var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
-
 var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
-
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
-
 var _websocket = _interopRequireDefault(require("./lib/client/websocket.browser"));
-
 var _client = _interopRequireDefault(require("./lib/client"));
-
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
 var Client = /*#__PURE__*/function (_CommonClient) {
   (0, _inherits2["default"])(Client, _CommonClient);
-
   var _super = _createSuper(Client);
-
   function Client() {
     var address = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "ws://localhost:8080";
-
     var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-        _ref$autoconnect = _ref.autoconnect,
-        autoconnect = _ref$autoconnect === void 0 ? true : _ref$autoconnect,
-        _ref$reconnect = _ref.reconnect,
-        reconnect = _ref$reconnect === void 0 ? true : _ref$reconnect,
-        _ref$reconnect_interv = _ref.reconnect_interval,
-        reconnect_interval = _ref$reconnect_interv === void 0 ? 1000 : _ref$reconnect_interv,
-        _ref$max_reconnects = _ref.max_reconnects,
-        max_reconnects = _ref$max_reconnects === void 0 ? 5 : _ref$max_reconnects;
-
+      _ref$autoconnect = _ref.autoconnect,
+      autoconnect = _ref$autoconnect === void 0 ? true : _ref$autoconnect,
+      _ref$reconnect = _ref.reconnect,
+      reconnect = _ref$reconnect === void 0 ? true : _ref$reconnect,
+      _ref$reconnect_interv = _ref.reconnect_interval,
+      reconnect_interval = _ref$reconnect_interv === void 0 ? 1000 : _ref$reconnect_interv,
+      _ref$max_reconnects = _ref.max_reconnects,
+      max_reconnects = _ref$max_reconnects === void 0 ? 5 : _ref$max_reconnects;
     var generate_request_id = arguments.length > 2 ? arguments[2] : undefined;
     (0, _classCallCheck2["default"])(this, Client);
     return _super.call(this, _websocket["default"], address, {
@@ -53,10 +38,8 @@ var Client = /*#__PURE__*/function (_CommonClient) {
       max_reconnects: max_reconnects
     }, generate_request_id);
   }
-
   return (0, _createClass2["default"])(Client);
 }(_client["default"]);
-
 exports.Client = Client;
 },{"./lib/client":2,"./lib/client/websocket.browser":3,"@babel/runtime/helpers/classCallCheck":6,"@babel/runtime/helpers/createClass":7,"@babel/runtime/helpers/getPrototypeOf":8,"@babel/runtime/helpers/inherits":9,"@babel/runtime/helpers/interopRequireDefault":10,"@babel/runtime/helpers/possibleConstructorReturn":11}],2:[function(require,module,exports){
 (function (Buffer){(function (){
@@ -68,53 +51,35 @@ exports.Client = Client;
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
-
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-
 var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
-
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
-
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-
 var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
-
 var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
-
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
-
 var _eventemitter = require("eventemitter3");
-
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
 var __rest = void 0 && (void 0).__rest || function (s, e) {
   var t = {};
-
   for (var p in s) {
     if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
   }
-
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
     if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
   }
   return t;
-}; // @ts-ignore
-
-
+};
+// @ts-ignore
 var CommonClient = /*#__PURE__*/function (_EventEmitter) {
   (0, _inherits2["default"])(CommonClient, _EventEmitter);
-
   var _super = _createSuper(CommonClient);
-
   /**
    * Instantiate a Client class.
    * @constructor
@@ -126,24 +91,19 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
    */
   function CommonClient(webSocketFactory) {
     var _this;
-
     var address = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "ws://localhost:8080";
-
     var _a = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
     var generate_request_id = arguments.length > 3 ? arguments[3] : undefined;
     (0, _classCallCheck2["default"])(this, CommonClient);
-
     var _a$autoconnect = _a.autoconnect,
-        autoconnect = _a$autoconnect === void 0 ? true : _a$autoconnect,
-        _a$reconnect = _a.reconnect,
-        reconnect = _a$reconnect === void 0 ? true : _a$reconnect,
-        _a$reconnect_interval = _a.reconnect_interval,
-        reconnect_interval = _a$reconnect_interval === void 0 ? 1000 : _a$reconnect_interval,
-        _a$max_reconnects = _a.max_reconnects,
-        max_reconnects = _a$max_reconnects === void 0 ? 5 : _a$max_reconnects,
-        rest_options = __rest(_a, ["autoconnect", "reconnect", "reconnect_interval", "max_reconnects"]);
-
+      autoconnect = _a$autoconnect === void 0 ? true : _a$autoconnect,
+      _a$reconnect = _a.reconnect,
+      reconnect = _a$reconnect === void 0 ? true : _a$reconnect,
+      _a$reconnect_interval = _a.reconnect_interval,
+      reconnect_interval = _a$reconnect_interval === void 0 ? 1000 : _a$reconnect_interval,
+      _a$max_reconnects = _a.max_reconnects,
+      max_reconnects = _a$max_reconnects === void 0 ? 5 : _a$max_reconnects,
+      rest_options = __rest(_a, ["autoconnect", "reconnect", "reconnect_interval", "max_reconnects"]);
     _this = _super.call(this);
     _this.webSocketFactory = webSocketFactory;
     _this.queue = {};
@@ -156,11 +116,9 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
     _this.max_reconnects = max_reconnects;
     _this.rest_options = rest_options;
     _this.current_reconnects = 0;
-
     _this.generate_request_id = generate_request_id || function () {
       return ++_this.rpc_id;
     };
-
     if (_this.autoconnect) _this._connect(_this.address, Object.assign({
       autoconnect: _this.autoconnect,
       reconnect: _this.reconnect,
@@ -174,13 +132,10 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
    * @method
    * @return {Undefined}
    */
-
-
   (0, _createClass2["default"])(CommonClient, [{
     key: "connect",
     value: function connect() {
       if (this.socket) return;
-
       this._connect(this.address, Object.assign({
         autoconnect: this.autoconnect,
         reconnect: this.reconnect,
@@ -197,35 +152,28 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
      * @param {Object} ws_opts - options passed to ws
      * @return {Promise}
      */
-
   }, {
     key: "call",
     value: function call(method, params, timeout, ws_opts) {
       var _this2 = this;
-
       if (!ws_opts && "object" === (0, _typeof2["default"])(timeout)) {
         ws_opts = timeout;
         timeout = null;
       }
-
       return new Promise(function (resolve, reject) {
         if (!_this2.ready) return reject(new Error("socket not ready"));
-
         var rpc_id = _this2.generate_request_id(method, params);
-
         var message = {
           jsonrpc: "2.0",
           method: method,
           params: params || null,
           id: rpc_id
         };
-
         _this2.socket.send(JSON.stringify(message), ws_opts, function (error) {
           if (error) return reject(error);
           _this2.queue[rpc_id] = {
             promise: [resolve, reject]
           };
-
           if (timeout) {
             _this2.queue[rpc_id].timeout = setTimeout(function () {
               delete _this2.queue[rpc_id];
@@ -241,7 +189,6 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
      * @param {Object} params - Login credentials object
      * @return {Promise}
      */
-
   }, {
     key: "login",
     value: function () {
@@ -253,20 +200,15 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
               case 0:
                 _context.next = 2;
                 return this.call("rpc.login", params);
-
               case 2:
                 resp = _context.sent;
-
                 if (resp) {
                   _context.next = 5;
                   break;
                 }
-
                 throw new Error("authentication failed");
-
               case 5:
                 return _context.abrupt("return", resp);
-
               case 6:
               case "end":
                 return _context.stop();
@@ -274,19 +216,15 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
           }
         }, _callee, this);
       }));
-
       function login(_x) {
         return _login.apply(this, arguments);
       }
-
       return login;
-    }()
-    /**
-     * Fetches a list of client's methods registered on server.
-     * @method
-     * @return {Array}
-     */
-
+    }() /**
+         * Fetches a list of client's methods registered on server.
+         * @method
+         * @return {Array}
+         */
   }, {
     key: "listMethods",
     value: function () {
@@ -297,10 +235,8 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
               case 0:
                 _context2.next = 2;
                 return this.call("__listMethods");
-
               case 2:
                 return _context2.abrupt("return", _context2.sent);
-
               case 3:
               case "end":
                 return _context2.stop();
@@ -308,26 +244,21 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
           }
         }, _callee2, this);
       }));
-
       function listMethods() {
         return _listMethods.apply(this, arguments);
       }
-
       return listMethods;
-    }()
-    /**
-     * Sends a JSON-RPC 2.0 notification to server.
-     * @method
-     * @param {String} method - RPC method name
-     * @param {Object} params - optional method parameters
-     * @return {Promise}
-     */
-
+    }() /**
+         * Sends a JSON-RPC 2.0 notification to server.
+         * @method
+         * @param {String} method - RPC method name
+         * @param {Object} params - optional method parameters
+         * @return {Promise}
+         */
   }, {
     key: "notify",
     value: function notify(method, params) {
       var _this3 = this;
-
       return new Promise(function (resolve, reject) {
         if (!_this3.ready) return reject(new Error("socket not ready"));
         var message = {
@@ -335,7 +266,6 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
           method: method,
           params: params || null
         };
-
         _this3.socket.send(JSON.stringify(message), function (error) {
           if (error) return reject(error);
           resolve();
@@ -349,7 +279,6 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
      * @return {Undefined}
      * @throws {Error}
      */
-
   }, {
     key: "subscribe",
     value: function () {
@@ -362,20 +291,15 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
                 if (typeof event === "string") event = [event];
                 _context3.next = 3;
                 return this.call("rpc.on", event);
-
               case 3:
                 result = _context3.sent;
-
                 if (!(typeof event === "string" && result[event] !== "ok")) {
                   _context3.next = 6;
                   break;
                 }
-
                 throw new Error("Failed subscribing to an event '" + event + "' with: " + result[event]);
-
               case 6:
                 return _context3.abrupt("return", result);
-
               case 7:
               case "end":
                 return _context3.stop();
@@ -383,21 +307,17 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
           }
         }, _callee3, this);
       }));
-
       function subscribe(_x2) {
         return _subscribe.apply(this, arguments);
       }
-
       return subscribe;
-    }()
-    /**
-     * Unsubscribes from a defined event.
-     * @method
-     * @param {String|Array} event - event name
-     * @return {Undefined}
-     * @throws {Error}
-     */
-
+    }() /**
+         * Unsubscribes from a defined event.
+         * @method
+         * @param {String|Array} event - event name
+         * @return {Undefined}
+         * @throws {Error}
+         */
   }, {
     key: "unsubscribe",
     value: function () {
@@ -410,20 +330,15 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
                 if (typeof event === "string") event = [event];
                 _context4.next = 3;
                 return this.call("rpc.off", event);
-
               case 3:
                 result = _context4.sent;
-
                 if (!(typeof event === "string" && result[event] !== "ok")) {
                   _context4.next = 6;
                   break;
                 }
-
                 throw new Error("Failed unsubscribing from an event with: " + result);
-
               case 6:
                 return _context4.abrupt("return", result);
-
               case 7:
               case "end":
                 return _context4.stop();
@@ -431,21 +346,17 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
           }
         }, _callee4, this);
       }));
-
       function unsubscribe(_x3) {
         return _unsubscribe.apply(this, arguments);
       }
-
       return unsubscribe;
-    }()
-    /**
-     * Closes a WebSocket connection gracefully.
-     * @method
-     * @param {Number} code - socket close code
-     * @param {String} data - optional data to be sent before closing
-     * @return {Undefined}
-     */
-
+    }() /**
+         * Closes a WebSocket connection gracefully.
+         * @method
+         * @param {Number} code - socket close code
+         * @param {String} data - optional data to be sent before closing
+         * @return {Undefined}
+         */
   }, {
     key: "close",
     value: function close(code, data) {
@@ -459,45 +370,39 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
      * @param {Object} options - ws options object
      * @return {Undefined}
      */
-
   }, {
     key: "_connect",
     value: function _connect(address, options) {
       var _this4 = this;
-
       this.socket = this.webSocketFactory(address, options);
       this.socket.addEventListener("open", function () {
         _this4.ready = true;
-
         _this4.emit("open");
-
         _this4.current_reconnects = 0;
       });
       this.socket.addEventListener("message", function (_ref) {
         var message = _ref.data;
         if (message instanceof ArrayBuffer) message = Buffer.from(message).toString();
-
         try {
           message = JSON.parse(message);
         } catch (error) {
           return;
-        } // check if any listeners are attached and forward event
-
-
+        }
+        // check if any listeners are attached and forward event
         if (message.notification && _this4.listeners(message.notification).length) {
           if (!Object.keys(message.params).length) return _this4.emit(message.notification);
           var args = [message.notification];
-          if (message.params.constructor === Object) args.push(message.params);else // using for-loop instead of unshift/spread because performance is better
+          if (message.params.constructor === Object) args.push(message.params);else
+            // using for-loop instead of unshift/spread because performance is better
             for (var i = 0; i < message.params.length; i++) {
               args.push(message.params[i]);
-            } // run as microtask so that pending queue messages are resolved first
+            }
+          // run as microtask so that pending queue messages are resolved first
           // eslint-disable-next-line prefer-spread
-
           return Promise.resolve().then(function () {
             _this4.emit.apply(_this4, args);
           });
         }
-
         if (!_this4.queue[message.id]) {
           // general JSON RPC 2.0 events
           if (message.method && message.params) {
@@ -506,11 +411,9 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
               _this4.emit(message.method, message.params);
             });
           }
-
           return;
-        } // reject early since server's response is invalid
-
-
+        }
+        // reject early since server's response is invalid
         if ("error" in message === "result" in message) _this4.queue[message.id].promise[1](new Error("Server response malformed. Response must include either \"result\"" + " or \"error\", but not both."));
         if (_this4.queue[message.id].timeout) clearTimeout(_this4.queue[message.id].timeout);
         if (message.error) _this4.queue[message.id].promise[1](message.error);else _this4.queue[message.id].promise[0](message.result);
@@ -521,8 +424,9 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
       });
       this.socket.addEventListener("close", function (_ref2) {
         var code = _ref2.code,
-            reason = _ref2.reason;
-        if (_this4.ready) // Delay close event until internal state is updated
+          reason = _ref2.reason;
+        if (_this4.ready)
+          // Delay close event until internal state is updated
           setTimeout(function () {
             return _this4.emit("close", code, reason);
           }, 0);
@@ -538,10 +442,10 @@ var CommonClient = /*#__PURE__*/function (_EventEmitter) {
   }]);
   return CommonClient;
 }(_eventemitter.EventEmitter);
-
 exports["default"] = CommonClient;
 }).call(this)}).call(this,require("buffer").Buffer)
 },{"@babel/runtime/helpers/asyncToGenerator":5,"@babel/runtime/helpers/classCallCheck":6,"@babel/runtime/helpers/createClass":7,"@babel/runtime/helpers/getPrototypeOf":8,"@babel/runtime/helpers/inherits":9,"@babel/runtime/helpers/interopRequireDefault":10,"@babel/runtime/helpers/possibleConstructorReturn":11,"@babel/runtime/helpers/typeof":14,"@babel/runtime/regenerator":15,"buffer":17,"eventemitter3":18}],3:[function(require,module,exports){
+(function (global){(function (){
 /**
  * WebSocket implements a browser-side WebSocket specification.
  * @module Client
@@ -549,80 +453,59 @@ exports["default"] = CommonClient;
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = _default;
-
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
-
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-
 var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
-
 var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
-
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
-
 var _eventemitter = require("eventemitter3");
-
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
 var WebSocketBrowserImpl = /*#__PURE__*/function (_EventEmitter) {
   (0, _inherits2["default"])(WebSocketBrowserImpl, _EventEmitter);
-
   var _super = _createSuper(WebSocketBrowserImpl);
-
   /** Instantiate a WebSocket class
-   * @constructor
-   * @param {String} address - url to a websocket server
-   * @param {(Object)} options - websocket options
-   * @param {(String|Array)} protocols - a list of protocols
-   * @return {WebSocketBrowserImpl} - returns a WebSocket instance
-   */
+  * @constructor
+  * @param {String} address - url to a websocket server
+  * @param {(Object)} options - websocket options
+  * @param {(String|Array)} protocols - a list of protocols
+  * @return {WebSocketBrowserImpl} - returns a WebSocket instance
+  */
   function WebSocketBrowserImpl(address, options, protocols) {
     var _this;
-
     (0, _classCallCheck2["default"])(this, WebSocketBrowserImpl);
     _this = _super.call(this);
-    _this.socket = new window.WebSocket(address, protocols);
-
+    _this.socket = new global.WebSocket(address, protocols);
     _this.socket.onopen = function () {
       return _this.emit("open");
     };
-
     _this.socket.onmessage = function (event) {
       return _this.emit("message", event.data);
     };
-
     _this.socket.onerror = function (error) {
       return _this.emit("error", error);
     };
-
     _this.socket.onclose = function (event) {
       _this.emit("close", event.code, event.reason);
     };
-
     return _this;
   }
   /**
-   * Sends data through a websocket connection
-   * @method
-   * @param {(String|Object)} data - data to be sent via websocket
-   * @param {Object} optionsOrCallback - ws options
-   * @param {Function} callback - a callback called once the data is sent
-   * @return {Undefined}
-   */
-
-
+  * Sends data through a websocket connection
+  * @method
+  * @param {(String|Object)} data - data to be sent via websocket
+  * @param {Object} optionsOrCallback - ws options
+  * @param {Function} callback - a callback called once the data is sent
+  * @return {Undefined}
+  */
   (0, _createClass2["default"])(WebSocketBrowserImpl, [{
     key: "send",
     value: function send(data, optionsOrCallback, callback) {
       var cb = callback || optionsOrCallback;
-
       try {
         this.socket.send(data);
         cb();
@@ -631,14 +514,13 @@ var WebSocketBrowserImpl = /*#__PURE__*/function (_EventEmitter) {
       }
     }
     /**
-     * Closes an underlying socket
-     * @method
-     * @param {Number} code - status code explaining why the connection is being closed
-     * @param {String} reason - a description why the connection is closing
-     * @return {Undefined}
-     * @throws {Error}
-     */
-
+    * Closes an underlying socket
+    * @method
+    * @param {Number} code - status code explaining why the connection is being closed
+    * @param {String} reason - a description why the connection is closing
+    * @return {Undefined}
+    * @throws {Error}
+    */
   }, {
     key: "close",
     value: function close(code, reason) {
@@ -651,28 +533,24 @@ var WebSocketBrowserImpl = /*#__PURE__*/function (_EventEmitter) {
     }
   }]);
   return WebSocketBrowserImpl;
-}(_eventemitter.EventEmitter);
-/**
- * factory method for common WebSocket instance
- * @method
- * @param {String} address - url to a websocket server
- * @param {(Object)} options - websocket options
- * @return {Undefined}
- */
-
-
+}(_eventemitter.EventEmitter); /**
+                                * factory method for common WebSocket instance
+                                * @method
+                                * @param {String} address - url to a websocket server
+                                * @param {(Object)} options - websocket options
+                                * @return {Undefined}
+                                */
 function _default(address, options) {
   return new WebSocketBrowserImpl(address, options);
 }
+}).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"@babel/runtime/helpers/classCallCheck":6,"@babel/runtime/helpers/createClass":7,"@babel/runtime/helpers/getPrototypeOf":8,"@babel/runtime/helpers/inherits":9,"@babel/runtime/helpers/interopRequireDefault":10,"@babel/runtime/helpers/possibleConstructorReturn":11,"eventemitter3":18}],4:[function(require,module,exports){
 function _assertThisInitialized(self) {
   if (self === void 0) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
-
   return self;
 }
-
 module.exports = _assertThisInitialized, module.exports.__esModule = true, module.exports["default"] = module.exports;
 },{}],5:[function(require,module,exports){
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
@@ -683,34 +561,28 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
     reject(error);
     return;
   }
-
   if (info.done) {
     resolve(value);
   } else {
     Promise.resolve(value).then(_next, _throw);
   }
 }
-
 function _asyncToGenerator(fn) {
   return function () {
     var self = this,
-        args = arguments;
+      args = arguments;
     return new Promise(function (resolve, reject) {
       var gen = fn.apply(self, args);
-
       function _next(value) {
         asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
       }
-
       function _throw(err) {
         asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
       }
-
       _next(undefined);
     });
   };
 }
-
 module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exports["default"] = module.exports;
 },{}],6:[function(require,module,exports){
 function _classCallCheck(instance, Constructor) {
@@ -718,7 +590,6 @@ function _classCallCheck(instance, Constructor) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
-
 module.exports = _classCallCheck, module.exports.__esModule = true, module.exports["default"] = module.exports;
 },{}],7:[function(require,module,exports){
 function _defineProperties(target, props) {
@@ -730,7 +601,6 @@ function _defineProperties(target, props) {
     Object.defineProperty(target, descriptor.key, descriptor);
   }
 }
-
 function _createClass(Constructor, protoProps, staticProps) {
   if (protoProps) _defineProperties(Constructor.prototype, protoProps);
   if (staticProps) _defineProperties(Constructor, staticProps);
@@ -739,7 +609,6 @@ function _createClass(Constructor, protoProps, staticProps) {
   });
   return Constructor;
 }
-
 module.exports = _createClass, module.exports.__esModule = true, module.exports["default"] = module.exports;
 },{}],8:[function(require,module,exports){
 function _getPrototypeOf(o) {
@@ -748,16 +617,13 @@ function _getPrototypeOf(o) {
   }, module.exports.__esModule = true, module.exports["default"] = module.exports;
   return _getPrototypeOf(o);
 }
-
 module.exports = _getPrototypeOf, module.exports.__esModule = true, module.exports["default"] = module.exports;
 },{}],9:[function(require,module,exports){
 var setPrototypeOf = require("./setPrototypeOf.js");
-
 function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
     throw new TypeError("Super expression must either be null or a function");
   }
-
   subClass.prototype = Object.create(superClass && superClass.prototype, {
     constructor: {
       value: subClass,
@@ -770,7 +636,6 @@ function _inherits(subClass, superClass) {
   });
   if (superClass) setPrototypeOf(subClass, superClass);
 }
-
 module.exports = _inherits, module.exports.__esModule = true, module.exports["default"] = module.exports;
 },{"./setPrototypeOf.js":13}],10:[function(require,module,exports){
 function _interopRequireDefault(obj) {
@@ -778,42 +643,33 @@ function _interopRequireDefault(obj) {
     "default": obj
   };
 }
-
 module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
 },{}],11:[function(require,module,exports){
 var _typeof = require("./typeof.js")["default"];
-
 var assertThisInitialized = require("./assertThisInitialized.js");
-
 function _possibleConstructorReturn(self, call) {
   if (call && (_typeof(call) === "object" || typeof call === "function")) {
     return call;
   } else if (call !== void 0) {
     throw new TypeError("Derived constructors may only return object or undefined");
   }
-
   return assertThisInitialized(self);
 }
-
 module.exports = _possibleConstructorReturn, module.exports.__esModule = true, module.exports["default"] = module.exports;
 },{"./assertThisInitialized.js":4,"./typeof.js":14}],12:[function(require,module,exports){
 var _typeof = require("./typeof.js")["default"];
-
 function _regeneratorRuntime() {
-  "use strict";
-  /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
-
+  "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
   module.exports = _regeneratorRuntime = function _regeneratorRuntime() {
     return exports;
   }, module.exports.__esModule = true, module.exports["default"] = module.exports;
   var exports = {},
-      Op = Object.prototype,
-      hasOwn = Op.hasOwnProperty,
-      $Symbol = "function" == typeof Symbol ? Symbol : {},
-      iteratorSymbol = $Symbol.iterator || "@@iterator",
-      asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator",
-      toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
-
+    Op = Object.prototype,
+    hasOwn = Op.hasOwnProperty,
+    $Symbol = "function" == typeof Symbol ? Symbol : {},
+    iteratorSymbol = $Symbol.iterator || "@@iterator",
+    asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator",
+    toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
   function define(obj, key, value) {
     return Object.defineProperty(obj, key, {
       value: value,
@@ -822,7 +678,6 @@ function _regeneratorRuntime() {
       writable: !0
     }), obj[key];
   }
-
   try {
     define({}, "");
   } catch (err) {
@@ -830,40 +685,33 @@ function _regeneratorRuntime() {
       return obj[key] = value;
     };
   }
-
   function wrap(innerFn, outerFn, self, tryLocsList) {
     var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator,
-        generator = Object.create(protoGenerator.prototype),
-        context = new Context(tryLocsList || []);
+      generator = Object.create(protoGenerator.prototype),
+      context = new Context(tryLocsList || []);
     return generator._invoke = function (innerFn, self, context) {
       var state = "suspendedStart";
       return function (method, arg) {
         if ("executing" === state) throw new Error("Generator is already running");
-
         if ("completed" === state) {
           if ("throw" === method) throw arg;
           return doneResult();
         }
-
         for (context.method = method, context.arg = arg;;) {
           var delegate = context.delegate;
-
           if (delegate) {
             var delegateResult = maybeInvokeDelegate(delegate, context);
-
             if (delegateResult) {
               if (delegateResult === ContinueSentinel) continue;
               return delegateResult;
             }
           }
-
           if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) {
             if ("suspendedStart" === state) throw state = "completed", context.arg;
             context.dispatchException(context.arg);
           } else "return" === context.method && context.abrupt("return", context.arg);
           state = "executing";
           var record = tryCatch(innerFn, self, context);
-
           if ("normal" === record.type) {
             if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue;
             return {
@@ -871,13 +719,11 @@ function _regeneratorRuntime() {
               done: context.done
             };
           }
-
           "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg);
         }
       };
     }(innerFn, self, context), generator;
   }
-
   function tryCatch(fn, obj, arg) {
     try {
       return {
@@ -891,25 +737,19 @@ function _regeneratorRuntime() {
       };
     }
   }
-
   exports.wrap = wrap;
   var ContinueSentinel = {};
-
   function Generator() {}
-
   function GeneratorFunction() {}
-
   function GeneratorFunctionPrototype() {}
-
   var IteratorPrototype = {};
   define(IteratorPrototype, iteratorSymbol, function () {
     return this;
   });
   var getProto = Object.getPrototypeOf,
-      NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+    NativeIteratorPrototype = getProto && getProto(getProto(values([])));
   NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype);
   var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype);
-
   function defineIteratorMethods(prototype) {
     ["next", "throw", "return"].forEach(function (method) {
       define(prototype, method, function (arg) {
@@ -917,14 +757,12 @@ function _regeneratorRuntime() {
       });
     });
   }
-
   function AsyncIterator(generator, PromiseImpl) {
     function invoke(method, arg, resolve, reject) {
       var record = tryCatch(generator[method], generator, arg);
-
       if ("throw" !== record.type) {
         var result = record.arg,
-            value = result.value;
+          value = result.value;
         return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) {
           invoke("next", value, resolve, reject);
         }, function (err) {
@@ -935,91 +773,73 @@ function _regeneratorRuntime() {
           return invoke("throw", error, resolve, reject);
         });
       }
-
       reject(record.arg);
     }
-
     var previousPromise;
-
     this._invoke = function (method, arg) {
       function callInvokeWithMethodAndArg() {
         return new PromiseImpl(function (resolve, reject) {
           invoke(method, arg, resolve, reject);
         });
       }
-
       return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
     };
   }
-
   function maybeInvokeDelegate(delegate, context) {
     var method = delegate.iterator[context.method];
-
     if (undefined === method) {
       if (context.delegate = null, "throw" === context.method) {
         if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel;
         context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method");
       }
-
       return ContinueSentinel;
     }
-
     var record = tryCatch(method, delegate.iterator, context.arg);
     if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel;
     var info = record.arg;
     return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel);
   }
-
   function pushTryEntry(locs) {
     var entry = {
       tryLoc: locs[0]
     };
     1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry);
   }
-
   function resetTryEntry(entry) {
     var record = entry.completion || {};
     record.type = "normal", delete record.arg, entry.completion = record;
   }
-
   function Context(tryLocsList) {
     this.tryEntries = [{
       tryLoc: "root"
     }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0);
   }
-
   function values(iterable) {
     if (iterable) {
       var iteratorMethod = iterable[iteratorSymbol];
       if (iteratorMethod) return iteratorMethod.call(iterable);
       if ("function" == typeof iterable.next) return iterable;
-
       if (!isNaN(iterable.length)) {
         var i = -1,
-            next = function next() {
-          for (; ++i < iterable.length;) {
-            if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next;
-          }
-
-          return next.value = undefined, next.done = !0, next;
-        };
-
+          next = function next() {
+            for (; ++i < iterable.length;) {
+              if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next;
+            }
+            return next.value = undefined, next.done = !0, next;
+          };
         return next.next = next;
       }
     }
-
     return {
       next: doneResult
     };
   }
-
   function doneResult() {
     return {
       value: undefined,
       done: !0
     };
   }
-
   return GeneratorFunction.prototype = GeneratorFunctionPrototype, define(Gp, "constructor", GeneratorFunctionPrototype), define(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) {
     var ctor = "function" == typeof genFun && genFun.constructor;
     return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name));
@@ -1043,17 +863,14 @@ function _regeneratorRuntime() {
     return "[object Generator]";
   }), exports.keys = function (object) {
     var keys = [];
-
     for (var key in object) {
       keys.push(key);
     }
-
     return keys.reverse(), function next() {
       for (; keys.length;) {
         var key = keys.pop();
         if (key in object) return next.value = key, next.done = !1, next;
       }
-
       return next.done = !0, next;
     };
   }, exports.values = values, Context.prototype = {
@@ -1072,20 +889,16 @@ function _regeneratorRuntime() {
     dispatchException: function dispatchException(exception) {
       if (this.done) throw exception;
       var context = this;
-
       function handle(loc, caught) {
         return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught;
       }
-
       for (var i = this.tryEntries.length - 1; i >= 0; --i) {
         var entry = this.tryEntries[i],
-            record = entry.completion;
+          record = entry.completion;
         if ("root" === entry.tryLoc) return handle("end");
-
         if (entry.tryLoc <= this.prev) {
           var hasCatch = hasOwn.call(entry, "catchLoc"),
-              hasFinally = hasOwn.call(entry, "finallyLoc");
-
+            hasFinally = hasOwn.call(entry, "finallyLoc");
           if (hasCatch && hasFinally) {
             if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0);
             if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc);
@@ -1101,13 +914,11 @@ function _regeneratorRuntime() {
     abrupt: function abrupt(type, arg) {
       for (var i = this.tryEntries.length - 1; i >= 0; --i) {
         var entry = this.tryEntries[i];
-
         if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) {
           var finallyEntry = entry;
           break;
         }
       }
-
       finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null);
       var record = finallyEntry ? finallyEntry.completion : {};
       return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record);
@@ -1125,19 +936,15 @@ function _regeneratorRuntime() {
     "catch": function _catch(tryLoc) {
       for (var i = this.tryEntries.length - 1; i >= 0; --i) {
         var entry = this.tryEntries[i];
-
         if (entry.tryLoc === tryLoc) {
           var record = entry.completion;
-
           if ("throw" === record.type) {
             var thrown = record.arg;
             resetTryEntry(entry);
           }
-
           return thrown;
         }
       }
-
       throw new Error("illegal catch attempt");
     },
     delegateYield: function delegateYield(iterable, resultName, nextLoc) {
@@ -1149,7 +956,6 @@ function _regeneratorRuntime() {
     }
   }, exports;
 }
-
 module.exports = _regeneratorRuntime, module.exports.__esModule = true, module.exports["default"] = module.exports;
 },{"./typeof.js":14}],13:[function(require,module,exports){
 function _setPrototypeOf(o, p) {
@@ -1159,7 +965,6 @@ function _setPrototypeOf(o, p) {
   }, module.exports.__esModule = true, module.exports["default"] = module.exports;
   return _setPrototypeOf(o, p);
 }
-
 module.exports = _setPrototypeOf, module.exports.__esModule = true, module.exports["default"] = module.exports;
 },{}],14:[function(require,module,exports){
 function _typeof(obj) {
@@ -1171,7 +976,6 @@ function _typeof(obj) {
     return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
   }, module.exports.__esModule = true, module.exports["default"] = module.exports), _typeof(obj);
 }
-
 module.exports = _typeof, module.exports.__esModule = true, module.exports["default"] = module.exports;
 },{}],15:[function(require,module,exports){
 // TODO(Babel 8): Remove this file.
